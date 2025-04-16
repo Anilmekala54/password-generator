@@ -31,7 +31,8 @@ function Passwordgenerator() {
   },[passwordGenerator])
   const refernce=useRef(null)
   const copyPassword=()=>{
-    refernce.current.select(0);
+    refernce.current.select();
+    window.navigator.clipboard.writeText(refernce.current.value)
   }
  
   return (
@@ -39,7 +40,7 @@ function Passwordgenerator() {
       <>
       <h1 className='font-bold'>Password Generator</h1>
       <input type="text" placeholder="Enter password length" className='border border-gray-500 w-xl p-1  ' value={password}  ref={refernce} />
-      <button className='bg-blue-600 p-1 border-2 border-blue-600' onClick={copyPassword} >Copy</button>
+      <button className='bg-blue-600 p-1 border-2 border-blue-600 cursor-pointer' onClick={copyPassword} >Copy</button>
      <div>
        <input type='range' min='1' max='100' className='m-2'  onChange={handleSize} value={size}/>
        <label htmlFor="size"> size:{size} </label>
